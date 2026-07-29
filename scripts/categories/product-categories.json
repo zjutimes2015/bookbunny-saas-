@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Dev Tools",
+    "emoji": "🛠",
+    "slug": "dev-tools",
+    "order": 1
+  },
+  {
+    "name": "AI Tools",
+    "emoji": "🤖",
+    "slug": "ai-tools",
+    "order": 2
+  },
+  {
+    "name": "Marketing",
+    "emoji": "📢",
+    "slug": "marketing",
+    "order": 3
+  },
+  {
+    "name": "Productivity",
+    "emoji": "💻",
+    "slug": "productivity",
+    "order": 4
+  },
+  {
+    "name": "Video",
+    "emoji": "🎥",
+    "slug": "video",
+    "order": 5
+  },
+  {
+    "name": "Graphic",
+    "emoji": "🎨",
+    "slug": "graphic",
+    "order": 6
+  },
+  {
+    "name": "Lifestyle",
+    "emoji": "🏝️",
+    "slug": "lifestyle",
+    "order": 7
+  },
+  {
+    "name": "Social",
+    "emoji": "🗣️",
+    "slug": "social",
+    "order": 8
+  },
+  {
+    "name": "Business",
+    "emoji": "💼",
+    "slug": "business",
+    "order": 9
+  },
+  {
+    "name": "Health",
+    "emoji": "🏃🏻‍♀️",
+    "slug": "health",
+    "order": 10
+  },
+  {
+    "name": "Directory",
+    "emoji": "🗺️",
+    "slug": "directory",
+    "order": 11
+  },
+  {
+    "name": "SEO",
+    "emoji": "🔎",
+    "slug": "seo",
+    "order": 12
+  },
+  {
+    "name": "Games",
+    "emoji": "🕹",
+    "slug": "games",
+    "order": 13
+  },
+  {
+    "name": "Education",
+    "emoji": "🎓",
+    "slug": "education",
+    "order": 14
+  },
+  {
+    "name": "Blog",
+    "emoji": "📝",
+    "slug": "blog",
+    "order": 15
+  },
+  {
+    "name": "Others",
+    "emoji": "📦",
+    "slug": "others",
+    "order": 16
+  }
+]

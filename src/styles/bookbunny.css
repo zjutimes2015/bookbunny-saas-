@@ -1,0 +1,138 @@
+/**
+ * BookBunny custom styles
+ * Migrated from BookBunny's styles/globals.css
+ * These styles are scoped to BookBunny pages only
+ */
+
+/* Bunny color theme */
+:root {
+  --color-bunny-pink: #ff6b8a;
+  --color-bunny-coral: #ff8fab;
+  --color-bunny-lavender: #c8a2e8;
+  --color-bunny-sky: #87ceeb;
+  --color-bunny-mint: #98d8c8;
+  --color-bunny-peach: #ffdab9;
+  --color-bunny-cream: #fff5ee;
+  --color-bunny-warm: #faf0e6;
+  --color-bunny-text: #2d2d2d;
+  --color-bunny-gray: #8e8e93;
+  --color-bunny-border: #e5e5ea;
+}
+
+/* Children's book playful accents */
+.bunny-gradient {
+  background: linear-gradient(135deg, #ff6b8a 0%, #c8a2e8 50%, #87ceeb 100%);
+}
+
+.bunny-text-gradient {
+  background: linear-gradient(135deg, #ff6b8a, #c8a2e8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Apple-style card */
+.bunny-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.04),
+    0 1px 4px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--color-bunny-border);
+  transition: all 0.2s ease;
+}
+
+.bunny-card:hover {
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+/* Apple-style buttons */
+.bunny-btn {
+  background: #2d2d2d;
+  color: white;
+  border-radius: 14px;
+  padding: 12px 24px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.bunny-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
+
+.bunny-btn-secondary {
+  background: #f2f2f7;
+  color: #2d2d2d;
+  border-radius: 14px;
+  padding: 12px 24px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.2s;
+  border: 1px solid var(--color-bunny-border);
+  cursor: pointer;
+}
+
+.bunny-btn-secondary:hover {
+  background: #e5e5ea;
+}
+
+/* Apple-style input */
+.bunny-input {
+  background: #f2f2f7;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+.bunny-input:focus {
+  border-color: var(--color-bunny-pink);
+  background: #ffffff;
+}
+
+/* Hero section bounce animation */
+@keyframes bunny-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.bunny-bounce {
+  animation: bunny-bounce 3s ease-in-out infinite;
+}
+
+/* Dark mode overrides for BookBunny */
+.dark .bunny-card {
+  background: #1c1c1e;
+  border-color: #38383a;
+}
+
+.dark .bunny-btn {
+  background: #f2f2f7;
+  color: #2d2d2d;
+}
+
+.dark .bunny-btn-secondary {
+  background: #2c2c2e;
+  color: #f2f2f7;
+  border-color: #38383a;
+}
+
+.dark .bunny-input {
+  background: #2c2c2e;
+  color: #f2f2f7;
+}

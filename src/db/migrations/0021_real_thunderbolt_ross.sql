@@ -1,0 +1,1 @@
+CREATE INDEX "product_deal_event_featured_created_idx" ON "product_deal" USING btree ("deal_event_id","featured","created_at");

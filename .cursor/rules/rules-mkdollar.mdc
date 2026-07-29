@@ -1,0 +1,6 @@
+---
+alwaysApply: true
+---
+
+- For new features, do not consider internalization.
+- Wherever possible, use LocaleLink instead of Link.
