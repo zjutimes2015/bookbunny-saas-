@@ -791,6 +791,19 @@
       "email": "Email: {email}",
       "message": "Message: {message}",
       "subject": "Contact Message from Website"
+    },
+    "dailyGreeting": {
+      "subject": "Ready to create a magical story today? - BookBunny",
+      "title": "Hi, {name}!",
+      "greeting": "Welcome back to BookBunny!",
+      "intro": "Every great children's book starts with a single idea. Today is the perfect day to bring your little one's imagination to life.",
+      "feature1": "Generate personalized stories with AI in seconds",
+      "feature2": "Add custom characters, themes, and illustrations",
+      "feature3": "Save and revisit your favorite stories anytime",
+      "ctaPrompt": "Ready to create today's adventure?",
+      "createButton": "Create a New Book",
+      "myBooksPrompt": "Or continue working on a story you've already started:",
+      "myBooksLink": "View My Books"
     }
   },
   "HomePage": {

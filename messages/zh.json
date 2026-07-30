@@ -786,6 +786,19 @@
       "email": "邮箱: {email}",
       "message": "消息: {message}",
       "subject": "来自网站的联系消息"
+    },
+    "dailyGreeting": {
+      "subject": "今天准备好创作一个神奇的故事了吗？- BookBunny",
+      "title": "你好，{name}！",
+      "greeting": "欢迎回到 BookBunny！",
+      "intro": "每一本优秀的童书都始于一个简单的想法。今天就是把孩子的想象力变为现实的完美一天。",
+      "feature1": "用 AI 几秒钟生成个性化故事",
+      "feature2": "添加自定义角色、主题和插图",
+      "feature3": "随时保存和回顾您最喜欢的故事",
+      "ctaPrompt": "准备好开始今天的冒险了吗？",
+      "createButton": "创作一本新书",
+      "myBooksPrompt": "或者继续您已经开始的故事：",
+      "myBooksLink": "查看我的书籍"
     }
   },
   "HomePage": {

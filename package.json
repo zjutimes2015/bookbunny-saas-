@@ -129,6 +129,7 @@
     "next-safe-action": "^8.0.11",
     "next-themes": "^0.4.6",
     "nuqs": "^2.8.4",
+    "pg": "^8.22.0",
     "postgres": "^3.4.5",
     "posthog-js": "^1.298.0",
     "prettier": "^3.7.4",
@@ -150,6 +151,7 @@
     "sonner": "^2.0.0",
     "streamdown": "^1.0.12",
     "stripe": "^17.6.0",
+    "svix": "1.76.1",
     "swiper": "^11.2.5",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7",
@@ -182,5 +184,10 @@
     "tsx": "^4.19.3",
     "typescript": "^5.8.3",
     "vite": "^7.2.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "entities": "4.5.0"
+    }
   }
 }

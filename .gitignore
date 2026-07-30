@@ -65,3 +65,18 @@ next-env.d.ts
 .dev.vars
 .dev.vars*
 !.dev.vars.example
+
+# Debug logs
+dev-output*.log
+server-log.txt
+server-stderr.log
+server-stdout.log
+
+# Test API endpoints (local debugging only)
+src/app/api/test-*/
+
+# pnpm workspace (local only)
+pnpm-workspace.yaml
+
+# Lock file regenerated
+pnpm-lock.yaml
