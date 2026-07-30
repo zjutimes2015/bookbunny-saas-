@@ -12,6 +12,19 @@ const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: false,
 
+  // https://nextjs.org/docs/app/api-reference/config/next-config-js/serverExternalPackages
+  // Packages that should be kept as external and not bundled by Turbopack
+  serverExternalPackages: [
+    'resend',
+    'svix',
+    '@react-email/components',
+    '@react-email/render',
+    'entities',
+    'htmlparser2',
+    'html-to-text',
+    'parse5',
+  ],
+
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
   compiler: {
