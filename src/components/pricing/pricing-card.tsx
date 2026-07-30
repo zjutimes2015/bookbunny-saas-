@@ -21,7 +21,7 @@ import {
   type Price,
   type PricePlan,
 } from '@/payment/types';
-import { CheckCircleIcon, XCircleIcon, Sparkles } from 'lucide-react';
+import { CheckCircleIcon, Sparkles, XCircleIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { LoginWrapper } from '../auth/login-wrapper';
 import { Badge } from '../ui/badge';
@@ -168,7 +168,11 @@ export function PricingCard({
         {/* show action buttons based on plans */}
         {plan.isFree ? (
           mounted && currentUser ? (
-            <Button variant="outline" className="mt-4 w-full bunny-btn-secondary" disabled>
+            <Button
+              variant="outline"
+              className="mt-4 w-full bunny-btn-secondary"
+              disabled
+            >
               {t('getStartedForFree')}
             </Button>
           ) : (

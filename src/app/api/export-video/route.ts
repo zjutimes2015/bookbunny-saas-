@@ -1,9 +1,9 @@
+import { execSync } from 'child_process';
+import { unlinkSync, writeFileSync } from 'fs';
+import { tmpdir } from 'os';
+import { join } from 'path';
 import { requireSession, unauthorizedResponse } from '@/lib/require-session';
 import { type NextRequest, NextResponse } from 'next/server';
-import { execSync } from 'child_process';
-import { writeFileSync, unlinkSync } from 'fs';
-import { join } from 'path';
-import { tmpdir } from 'os';
 
 /**
  * Export Video API
@@ -42,9 +42,8 @@ export async function POST(req: NextRequest) {
     // Normalize pages: accept string[] or { text, imageB64? }[]
     const bookData = {
       title,
-      pages: pages.map(
-        (p: string | { text: string; imageB64?: string }) =>
-          typeof p === 'string' ? { text: p } : p
+      pages: pages.map((p: string | { text: string; imageB64?: string }) =>
+        typeof p === 'string' ? { text: p } : p
       ),
     };
 
@@ -65,21 +64,31 @@ export async function POST(req: NextRequest) {
         execSync('python --version', { stdio: 'pipe' });
       }
 
-      execSync(`"${pythonCmd}" "${videoServicePath}" "${tmpInput}" "${tmpOutput}"`, {
-        timeout: 60000,
-        stdio: 'pipe',
-      });
+      execSync(
+        `"${pythonCmd}" "${videoServicePath}" "${tmpInput}" "${tmpOutput}"`,
+        {
+          timeout: 60000,
+          stdio: 'pipe',
+        }
+      );
 
       // Read the generated file
       const fs = await import('fs/promises');
       const buf = await fs.readFile(tmpOutput);
 
       // Cleanup temp files
-      try { unlinkSync(tmpInput); } catch {}
-      try { unlinkSync(tmpOutput); } catch {}
+      try {
+        unlinkSync(tmpInput);
+      } catch {}
+      try {
+        unlinkSync(tmpOutput);
+      } catch {}
 
       // If Python wrote an HTML fallback instead of MP4
-      if (tmpOutput.endsWith('.html') || buf.slice(0, 5).toString('utf-8') === '<!DOC') {
+      if (
+        tmpOutput.endsWith('.html') ||
+        buf.slice(0, 5).toString('utf-8') === '<!DOC'
+      ) {
         console.log('[export-video] returning HTML fallback');
         return new NextResponse(buf.toString('utf-8'), {
           headers: {
@@ -101,8 +110,12 @@ export async function POST(req: NextRequest) {
         },
       });
     } catch (pyErr) {
-      try { unlinkSync(tmpInput); } catch {}
-      try { unlinkSync(tmpOutput); } catch {}
+      try {
+        unlinkSync(tmpInput);
+      } catch {}
+      try {
+        unlinkSync(tmpOutput);
+      } catch {}
 
       console.error('[export-video] Python service error:', pyErr);
       return NextResponse.json(

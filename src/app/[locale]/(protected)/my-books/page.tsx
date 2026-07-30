@@ -1,3 +1,4 @@
+import { getUserBooksAction } from '@/actions/get-user-books';
 import { DashboardHeader } from '@/components/dashboard/dashboard-header';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -8,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { getUserBooksAction } from '@/actions/get-user-books';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
@@ -58,9 +58,12 @@ export default async function MyBooksPage(props: MyBooksPageProps) {
           <div className="flex flex-col gap-4 px-4 py-4 md:gap-6 md:px-6 md:py-6">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-semibold tracking-tight">My Books</h1>
+                <h1 className="text-2xl font-semibold tracking-tight">
+                  My Books
+                </h1>
                 <p className="text-sm text-muted-foreground">
-                  {books.length} book{books.length === 1 ? '' : 's'} in your library
+                  {books.length} book{books.length === 1 ? '' : 's'} in your
+                  library
                 </p>
               </div>
               <Button asChild>
@@ -72,11 +75,10 @@ export default async function MyBooksPage(props: MyBooksPageProps) {
               <Card>
                 <CardContent className="py-16 text-center">
                   <div className="text-5xl mb-4">📚</div>
-                  <h2 className="text-lg font-semibold mb-2">
-                    No books yet
-                  </h2>
+                  <h2 className="text-lg font-semibold mb-2">No books yet</h2>
                   <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
-                    Create your first magical children&apos;s book and it will appear here.
+                    Create your first magical children&apos;s book and it will
+                    appear here.
                   </p>
                   <Button asChild>
                     <Link href="/create">Create Your First Book</Link>
@@ -98,12 +100,16 @@ export default async function MyBooksPage(props: MyBooksPageProps) {
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between gap-2">
                         <div>
-                          <CardTitle className="text-base">{book.title}</CardTitle>
+                          <CardTitle className="text-base">
+                            {book.title}
+                          </CardTitle>
                           <CardDescription>
                             {book.theme ?? 'Custom'} • {book.ageGroup}
                           </CardDescription>
                         </div>
-                        <Badge variant={STATUS_VARIANT[book.status] ?? 'secondary'}>
+                        <Badge
+                          variant={STATUS_VARIANT[book.status] ?? 'secondary'}
+                        >
                           {book.status}
                         </Badge>
                       </div>
@@ -118,7 +124,9 @@ export default async function MyBooksPage(props: MyBooksPageProps) {
                           <Link href={`/books/${book.id}`}>View Details</Link>
                         </Button>
                         <Button asChild className="flex-1 bunny-btn">
-                          <Link href={`/create?bookId=${book.id}`}>Continue Editing</Link>
+                          <Link href={`/create?bookId=${book.id}`}>
+                            Continue Editing
+                          </Link>
                         </Button>
                       </div>
                     </CardContent>

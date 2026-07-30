@@ -1,9 +1,9 @@
+import { execSync } from 'child_process';
+import { unlinkSync, writeFileSync } from 'fs';
+import { tmpdir } from 'os';
+import { join } from 'path';
 import { requireSession, unauthorizedResponse } from '@/lib/require-session';
 import { type NextRequest, NextResponse } from 'next/server';
-import { execSync } from 'child_process';
-import { writeFileSync, unlinkSync } from 'fs';
-import { join } from 'path';
-import { tmpdir } from 'os';
 
 /**
  * Export PDF API
@@ -44,7 +44,9 @@ export async function POST(req: NextRequest) {
       author: author || 'BookBunny',
       size: size || '8.5x8.5',
       pages: pages.map(
-        (p: string | { text: string; characters?: string[]; imageB64?: string }) => ({
+        (
+          p: string | { text: string; characters?: string[]; imageB64?: string }
+        ) => ({
           text: typeof p === 'string' ? p : p.text,
           characters: typeof p === 'string' ? [] : p.characters || [],
           imageB64: typeof p === 'string' ? undefined : p.imageB64,
@@ -69,18 +71,25 @@ export async function POST(req: NextRequest) {
         execSync('python --version', { stdio: 'pipe' });
       }
 
-      execSync(`"${pythonCmd}" "${pdfServicePath}" "${tmpInput}" "${tmpOutput}"`, {
-        timeout: 30000,
-        stdio: 'pipe',
-      });
+      execSync(
+        `"${pythonCmd}" "${pdfServicePath}" "${tmpInput}" "${tmpOutput}"`,
+        {
+          timeout: 30000,
+          stdio: 'pipe',
+        }
+      );
 
       // Read the generated PDF
       const fs = await import('fs/promises');
       const pdfBuffer = await fs.readFile(tmpOutput);
 
       // Cleanup temp files
-      try { unlinkSync(tmpInput); } catch {}
-      try { unlinkSync(tmpOutput); } catch {}
+      try {
+        unlinkSync(tmpInput);
+      } catch {}
+      try {
+        unlinkSync(tmpOutput);
+      } catch {}
 
       console.log(
         `[export-pdf] success user=${session.user.id} size=${pdfBuffer.length}bytes`
@@ -95,10 +104,17 @@ export async function POST(req: NextRequest) {
       });
     } catch (pyErr) {
       // Cleanup on Python error
-      try { unlinkSync(tmpInput); } catch {}
-      try { unlinkSync(tmpOutput); } catch {}
+      try {
+        unlinkSync(tmpInput);
+      } catch {}
+      try {
+        unlinkSync(tmpOutput);
+      } catch {}
 
-      console.error('[export-pdf] Python service error, using HTML fallback:', pyErr);
+      console.error(
+        '[export-pdf] Python service error, using HTML fallback:',
+        pyErr
+      );
 
       // Fallback: return HTML if Python PDF fails
       const fallbackHtml = generateFallbackHtml(bookData);

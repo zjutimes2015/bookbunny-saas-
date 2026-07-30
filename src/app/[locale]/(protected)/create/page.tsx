@@ -4,9 +4,9 @@ import { getBookAction } from '@/actions/get-book';
 import { saveBookAction, updateBookStatusAction } from '@/actions/save-book';
 import { BunnyMascot } from '@/components/bookbunny/bunny-mascot';
 import { MultiCharacterManager } from '@/components/bookbunny/multi-character-manager';
+import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { useSearchParams } from 'next/navigation';
 
 /**
  * Book Create Page
@@ -70,7 +70,11 @@ export default function CreatePage() {
           return;
         }
 
-        const { book: bookData, character, story: storyData } = result.data as any;
+        const {
+          book: bookData,
+          character,
+          story: storyData,
+        } = result.data as any;
 
         // Restore state
         setBookId(bookData.id);
@@ -113,14 +117,11 @@ export default function CreatePage() {
   }, [editBookId]);
 
   // --- Character handlers ---
-  const handleAddCharacter = useCallback(
-    (name: string, photo?: File) => {
-      const newChar: CharData = { id: `char_${Date.now()}`, name };
-      if (photo) newChar.photoPreview = URL.createObjectURL(photo);
-      setCharacters((prev) => [...prev, newChar]);
-    },
-    []
-  );
+  const handleAddCharacter = useCallback((name: string, photo?: File) => {
+    const newChar: CharData = { id: `char_${Date.now()}`, name };
+    if (photo) newChar.photoPreview = URL.createObjectURL(photo);
+    setCharacters((prev) => [...prev, newChar]);
+  }, []);
 
   const handleRemoveCharacter = useCallback((id: string) => {
     setCharacters((prev) => prev.filter((c) => c.id !== id));
@@ -205,7 +206,10 @@ export default function CreatePage() {
   };
 
   // --- Image generation ---
-  const startGeneration = async (storyData: { title: string; pages: string[] }) => {
+  const startGeneration = async (storyData: {
+    title: string;
+    pages: string[];
+  }) => {
     try {
       const res = await fetch('/api/generate-pages', {
         method: 'POST',
@@ -225,8 +229,7 @@ export default function CreatePage() {
       setGenId(data.genId);
     } catch (err) {
       setError(
-        'Generation failed: ' +
-          (err instanceof Error ? err.message : 'Error')
+        'Generation failed: ' + (err instanceof Error ? err.message : 'Error')
       );
     }
   };
@@ -258,8 +261,12 @@ export default function CreatePage() {
             updateBookStatusAction({
               bookId,
               status: data.status === 'error' ? 'draft' : 'ready',
-              pageImageUrls: images.filter((img): img is string => Boolean(img)),
-            }).catch((err) => console.error('Failed to update book status:', err));
+              pageImageUrls: images.filter((img): img is string =>
+                Boolean(img)
+              ),
+            }).catch((err) =>
+              console.error('Failed to update book status:', err)
+            );
           }
 
           setTimeout(() => setStep('preview'), 500);
@@ -377,7 +384,9 @@ export default function CreatePage() {
               >
                 {stepLabels[i]}
               </span>
-              {i < 3 && <div className="h-px w-6 bg-[#E5E5EA] dark:bg-gray-700" />}
+              {i < 3 && (
+                <div className="h-px w-6 bg-[#E5E5EA] dark:bg-gray-700" />
+              )}
             </div>
           );
         })}
@@ -470,8 +479,7 @@ export default function CreatePage() {
 
           {/* Page thumbnail grid */}
           <div className="mx-auto grid max-w-2xl grid-cols-4 gap-2 sm:grid-cols-5 md:grid-cols-6">
-            {(genProgress?.pages ||
-              Array(20).fill({ status: 'pending' })).map(
+            {(genProgress?.pages || Array(20).fill({ status: 'pending' })).map(
               (p: { status: string }, i: number) => (
                 <div
                   key={i}

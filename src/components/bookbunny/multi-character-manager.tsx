@@ -88,9 +88,7 @@ export function MultiCharacterManager({
       {/* Character list */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
         {characters.map((char) => (
-          <div
-            className="bunny-card group relative p-3 text-center"
-          >
+          <div className="bunny-card group relative p-3 text-center">
             <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFF5EE] text-xl">
               {uploadingId === char.id ? (
                 <span className="animate-pulse text-sm">✨</span>

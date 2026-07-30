@@ -1,5 +1,5 @@
-import PricingSection from '@/components/blocks/pricing/pricing';
 import FaqSection from '@/components/blocks/faqs/faqs';
+import PricingSection from '@/components/blocks/pricing/pricing';
 import { BookBunnyHero } from '@/components/bookbunny/home-hero';
 import { constructMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';

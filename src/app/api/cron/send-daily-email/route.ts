@@ -55,7 +55,9 @@ export async function GET(request: Request) {
 </html>`;
 
     if (testRecipient) {
-      console.log(`[test mode] Sending daily email to test recipient: ${testRecipient}`);
+      console.log(
+        `[test mode] Sending daily email to test recipient: ${testRecipient}`
+      );
       const result = await resend.emails.send({
         from: 'BookBunny <support@celiafamily.com>',
         to: testRecipient,
@@ -82,11 +84,24 @@ export async function GET(request: Request) {
     const users = await db
       .select({ id: user.id, name: user.name, email: user.email })
       .from(user)
-      .where(and(eq(user.emailVerified, true), isNotNull(user.email), ne(user.email, ''), ne(user.banned, true)));
+      .where(
+        and(
+          eq(user.emailVerified, true),
+          isNotNull(user.email),
+          ne(user.email, ''),
+          ne(user.banned, true)
+        )
+      );
 
     if (users.length === 0) {
       console.log('No users found to send daily email');
-      return NextResponse.json({ success: true, message: 'No users found to send daily email', processedCount: 0, errorCount: 0, totalUsers: 0 });
+      return NextResponse.json({
+        success: true,
+        message: 'No users found to send daily email',
+        processedCount: 0,
+        errorCount: 0,
+        totalUsers: 0,
+      });
     }
 
     console.log(`Found ${users.length} users to send daily email`);
@@ -113,14 +128,17 @@ export async function GET(request: Request) {
         }
         await new Promise((resolve) => setTimeout(resolve, 200));
       } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        const errorMessage =
+          error instanceof Error ? error.message : 'Unknown error';
         console.error(`Error sending daily email to ${u.email}:`, errorMessage);
         errors.push({ email: u.email, error: errorMessage });
         errorCount++;
       }
     }
 
-    console.log(`>>> ${jobName} end, processed: ${processedCount}, errors: ${errorCount}`);
+    console.log(
+      `>>> ${jobName} end, processed: ${processedCount}, errors: ${errorCount}`
+    );
     return NextResponse.json({
       success: true,
       message: `Daily email sending completed, processed: ${processedCount}, errors: ${errorCount}`,
@@ -131,6 +149,13 @@ export async function GET(request: Request) {
     });
   } catch (error) {
     console.error(`Error in ${jobName}:`, error);
-    return NextResponse.json({ success: false, error: error instanceof Error ? error.message : 'Failed to send daily email' }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error:
+          error instanceof Error ? error.message : 'Failed to send daily email',
+      },
+      { status: 500 }
+    );
   }
 }

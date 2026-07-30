@@ -11,36 +11,34 @@ import { desc, sql } from 'drizzle-orm';
  *
  * Returns books joined with character and story info.
  */
-export const getUserBooksAction = userActionClient.action(
-  async ({ ctx }) => {
-    const currentUser = (ctx as { user: User }).user;
-    const userId = currentUser.id;
-    const db = await getDb();
+export const getUserBooksAction = userActionClient.action(async ({ ctx }) => {
+  const currentUser = (ctx as { user: User }).user;
+  const userId = currentUser.id;
+  const db = await getDb();
 
-    const rows = await db
-      .select({
-        id: book.id,
-        title: book.title,
-        status: book.status,
-        format: book.format,
-        pageImageUrls: book.pageImageUrls,
-        createdAt: book.createdAt,
-        updatedAt: book.updatedAt,
-        characterName: bookCharacter.name,
-        characterImageUrl: bookCharacter.imageUrl,
-        storyContent: bookStory.content,
-        ageGroup: bookStory.ageGroup,
-        theme: bookStory.theme,
-      })
-      .from(book)
-      .leftJoin(bookCharacter, sql`${book.characterId} = ${bookCharacter.id}`)
-      .leftJoin(bookStory, sql`${book.storyId} = ${bookStory.id}`)
-      .where(sql`${book.userId} = ${userId}`)
-      .orderBy(desc(book.createdAt));
+  const rows = await db
+    .select({
+      id: book.id,
+      title: book.title,
+      status: book.status,
+      format: book.format,
+      pageImageUrls: book.pageImageUrls,
+      createdAt: book.createdAt,
+      updatedAt: book.updatedAt,
+      characterName: bookCharacter.name,
+      characterImageUrl: bookCharacter.imageUrl,
+      storyContent: bookStory.content,
+      ageGroup: bookStory.ageGroup,
+      theme: bookStory.theme,
+    })
+    .from(book)
+    .leftJoin(bookCharacter, sql`${book.characterId} = ${bookCharacter.id}`)
+    .leftJoin(bookStory, sql`${book.storyId} = ${bookStory.id}`)
+    .where(sql`${book.userId} = ${userId}`)
+    .orderBy(desc(book.createdAt));
 
-    return { success: true, books: rows };
-  }
-);
+  return { success: true, books: rows };
+});
 
 /**
  * Get a single book by ID (ensuring it belongs to the current user).

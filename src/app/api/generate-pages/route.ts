@@ -1,4 +1,4 @@
-import { generateImage, DEFAULT_STYLE } from '@/ai/image/book-illustration';
+import { DEFAULT_STYLE, generateImage } from '@/ai/image/book-illustration';
 import { requireSession, unauthorizedResponse } from '@/lib/require-session';
 import { type NextRequest, NextResponse } from 'next/server';
 

@@ -1,12 +1,12 @@
 'use client';
 
+import { getBookAction } from '@/actions/get-book';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { getBookAction } from '@/actions/get-book';
 import { LocaleLink } from '@/i18n/navigation';
 import { authClient } from '@/lib/auth-client';
 import { formatDistanceToNow } from 'date-fns';
-import { zhCN, enUS } from 'date-fns/locale';
+import { enUS, zhCN } from 'date-fns/locale';
 import {
   ArrowLeftIcon,
   BookOpenIcon,

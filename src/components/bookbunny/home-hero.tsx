@@ -107,10 +107,26 @@ export async function BookBunnyHero({ locale }: HomeHeroProps) {
         </h2>
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
           {[
-            { icon: '🎨', title: 'Consistent Characters', desc: 'AI keeps your character looking the same on every page' },
-            { icon: '📖', title: '20-Page Stories', desc: 'Complete illustrated storybooks generated in minutes' },
-            { icon: '📄', title: 'PDF Export', desc: 'KDP-ready format for Amazon publishing' },
-            { icon: '🐰', title: 'Kid-Friendly', desc: 'Age-appropriate content for 0-10 year olds' },
+            {
+              icon: '🎨',
+              title: 'Consistent Characters',
+              desc: 'AI keeps your character looking the same on every page',
+            },
+            {
+              icon: '📖',
+              title: '20-Page Stories',
+              desc: 'Complete illustrated storybooks generated in minutes',
+            },
+            {
+              icon: '📄',
+              title: 'PDF Export',
+              desc: 'KDP-ready format for Amazon publishing',
+            },
+            {
+              icon: '🐰',
+              title: 'Kid-Friendly',
+              desc: 'Age-appropriate content for 0-10 year olds',
+            },
           ].map((feat) => (
             <div key={feat.title} className="bunny-card p-6 text-center">
               <div className="mb-3 text-3xl">{feat.icon}</div>

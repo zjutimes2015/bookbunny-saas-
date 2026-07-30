@@ -1,5 +1,6 @@
 'use client';
 
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Bar,
   BarChart,
@@ -14,7 +15,6 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const COLORS = ['#FF6B8A', '#C8A2E8', '#98D8C8', '#87CEEB', '#FFDAB9'];
 
@@ -83,7 +83,10 @@ export function AnalyticsCharts({
                     : [{ day: 'No data', count: 0 }]
                 }
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke="hsl(var(--border))"
+                />
                 <XAxis
                   dataKey="day"
                   tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }}
@@ -189,11 +192,17 @@ export function AnalyticsCharts({
                   />
                   <XAxis
                     dataKey="day"
-                    tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }}
+                    tick={{
+                      fontSize: 11,
+                      fill: 'hsl(var(--muted-foreground))',
+                    }}
                     tickFormatter={(v: string) => v.slice(5)}
                   />
                   <YAxis
-                    tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }}
+                    tick={{
+                      fontSize: 11,
+                      fill: 'hsl(var(--muted-foreground))',
+                    }}
                   />
                   <Tooltip
                     contentStyle={{

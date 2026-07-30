@@ -1,3 +1,4 @@
+import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Table,
@@ -7,10 +8,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
 import { getDb } from '@/db';
 import { book, bookCharacter, user } from '@/db/schema';
-import { desc, count, sql } from 'drizzle-orm';
+import { count, desc, sql } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic';
 
@@ -39,9 +39,7 @@ export default async function AdminBooksPage() {
   const db = await getDb();
 
   // Total count
-  const [{ total }] = await db
-    .select({ total: count() })
-    .from(book);
+  const [{ total }] = await db.select({ total: count() }).from(book);
 
   // Recent books with character + user info
   const rows = await db
@@ -111,7 +109,9 @@ export default async function AdminBooksPage() {
                         {new Date(b.createdAt).toLocaleDateString()}
                       </TableCell>
                       <TableCell className="text-center">
-                        <Badge variant={STATUS_VARIANT[b.status] ?? 'secondary'}>
+                        <Badge
+                          variant={STATUS_VARIANT[b.status] ?? 'secondary'}
+                        >
                           {b.status}
                         </Badge>
                       </TableCell>

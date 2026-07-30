@@ -130,8 +130,14 @@ export default async function AdminAnalyticsPage() {
         </Card>
       ) : (
         <AnalyticsCharts
-          dailyBooks={dailyBooks.map((d) => ({ day: d.day, count: Number(d.count) }))}
-          dailyChars={dailyChars.map((d) => ({ day: d.day, count: Number(d.count) }))}
+          dailyBooks={dailyBooks.map((d) => ({
+            day: d.day,
+            count: Number(d.count),
+          }))}
+          dailyChars={dailyChars.map((d) => ({
+            day: d.day,
+            count: Number(d.count),
+          }))}
           statusCounts={statusCounts.map((s) => ({
             status: s.status ?? 'unknown',
             count: Number(s.count),
