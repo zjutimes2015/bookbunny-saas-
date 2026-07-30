@@ -37,7 +37,7 @@ export const websiteConfig: WebsiteConfig = {
     enablePromotekitAffiliate: false,
     enableDatafastRevenueTrack: false,
     enableCrispChat: false,
-    enableTurnstileCaptcha: false,
+    enableTurnstileCaptcha: true,
   },
   routes: {
     defaultLoginRedirect: '/products',
@@ -76,8 +76,8 @@ export const websiteConfig: WebsiteConfig = {
   },
   mail: {
     provider: 'resend',
-    fromEmail: 'MkDollar <support@mkdollar.com>',
-    supportEmail: 'MkDollar <support@mkdollar.com>',
+    fromEmail: 'BookBunny <support@celiafamily.com>',
+    supportEmail: 'BookBunny <support@celiafamily.com>',
   },
   newsletter: {
     enable: true,
