@@ -1,5 +1,6 @@
 import type { Locale, Messages } from 'next-intl';
 import ContactMessage from './templates/contact-message';
+import DailyGreeting from './templates/daily-greeting';
 import ForgotPassword from './templates/forgot-password';
 import SubscribeNewsletter from './templates/subscribe-newsletter';
 import VerifyEmail from './templates/verify-email';
@@ -12,6 +13,7 @@ export const EmailTemplates = {
   verifyEmail: VerifyEmail,
   subscribeNewsletter: SubscribeNewsletter,
   contactMessage: ContactMessage,
+  dailyGreeting: DailyGreeting,
 } as const;
 
 /**
