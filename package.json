@@ -36,7 +36,15 @@
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
-    "knip": "knip"
+    "knip": "knip",
+    "test:e2e": "node scripts/e2e-test.cjs all",
+    "test:e2e:db": "node scripts/e2e-test.cjs db",
+    "test:e2e:ai": "node scripts/e2e-test.cjs ai",
+    "test:e2e:stripe": "node scripts/e2e-test.cjs stripe",
+    "test:e2e:resend": "node scripts/e2e-test.cjs resend",
+    "test:e2e:cron": "node scripts/e2e-test.cjs cron",
+    "test:e2e:auth": "node scripts/e2e-test.cjs auth",
+    "test:webhook": "node scripts/test-stripe-webhook.cjs"
   },
   "dependencies": {
     "@ai-sdk/deepseek": "^1.0.0",

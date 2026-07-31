@@ -116,7 +116,8 @@ export const webContentAnalyzerConfig = {
     // model: 'openrouter/horizon-beta',
     // model: 'x-ai/grok-3-beta',
     // model: 'openai/gpt-4o-mini',
-    model: 'deepseek/deepseek-r1:free',
+    // deepseek-r1:free 已停用，改用付费版
+    model: 'deepseek/deepseek-r1',
     temperature: 0.1,
     maxTokens: 2000,
   },
