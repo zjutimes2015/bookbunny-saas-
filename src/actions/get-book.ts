@@ -2,7 +2,7 @@
 
 import { getDb } from '@/db';
 import { book, bookCharacter, bookStory } from '@/db/schema';
-import { authActionClient } from '@/lib/safe-action';
+import { userActionClient } from '@/lib/safe-action';
 import { and, eq } from 'drizzle-orm';
 import { z } from 'zod';
 
@@ -15,7 +15,7 @@ const getBookSchema = z.object({
   bookId: z.string().uuid(),
 });
 
-export const getBookAction = authActionClient
+export const getBookAction = userActionClient
   .schema(getBookSchema)
   .action(async ({ parsedInput, ctx }) => {
     const userId = ctx.user.id;
