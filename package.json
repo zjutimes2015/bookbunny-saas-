@@ -122,7 +122,7 @@
     "deepmerge": "^4.3.1",
     "dotenv": "^16.4.7",
     "dotted-map": "^2.2.3",
-    "drizzle-orm": "^0.39.3",
+    "drizzle-orm": "^0.45.2",
     "drizzle-seed": "^0.3.1",
     "embla-carousel-react": "^8.5.2",
     "fumadocs-core": "^16.2.4",
