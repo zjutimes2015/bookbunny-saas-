@@ -1,5 +1,6 @@
 import { websiteConfig } from '@/config/website';
 import { StripeProvider } from './provider/stripe';
+import { WaffoProvider } from './provider/waffo';
 import type {
   CheckoutResult,
   CreateCheckoutParams,
@@ -34,6 +35,8 @@ export const initializePaymentProvider = (): PaymentProvider => {
   if (!paymentProvider) {
     if (websiteConfig.payment.provider === 'stripe') {
       paymentProvider = new StripeProvider();
+    } else if (websiteConfig.payment.provider === 'waffo') {
+      paymentProvider = new WaffoProvider();
     } else {
       throw new Error(
         `Unsupported payment provider: ${websiteConfig.payment.provider}`

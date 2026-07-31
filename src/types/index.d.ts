@@ -162,7 +162,7 @@ export interface StorageConfig {
  * Payment configuration
  */
 export interface PaymentConfig {
-  provider: 'stripe';                // The payment provider, only stripe is supported for now
+  provider: 'stripe' | 'waffo';      // The payment provider, stripe or waffo (MoR backup)
 }
 
 /**
