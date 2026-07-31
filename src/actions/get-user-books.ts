@@ -5,6 +5,7 @@ import { book, bookCharacter, bookStory } from '@/db/schema';
 import type { User } from '@/lib/auth-types';
 import { userActionClient } from '@/lib/safe-action';
 import { desc, sql } from 'drizzle-orm';
+import { z } from 'zod';
 
 /**
  * Get all books for the current authenticated user.
@@ -45,11 +46,16 @@ export const getUserBooksAction = userActionClient.action(
 /**
  * Get a single book by ID (ensuring it belongs to the current user).
  */
-export const getBookByIdAction = userActionClient.action(
-  async ({ ctx, parsedInput }) => {
+const getBookByIdSchema = z.object({
+  bookId: z.string().uuid(),
+});
+
+export const getBookByIdAction = userActionClient
+  .schema(getBookByIdSchema)
+  .action(async ({ ctx, parsedInput }) => {
     const currentUser = (ctx as { user: User }).user;
     const userId = currentUser.id;
-    const bookId = (parsedInput as { bookId: string }).bookId;
+    const bookId = parsedInput.bookId;
 
     const db = await getDb();
 
