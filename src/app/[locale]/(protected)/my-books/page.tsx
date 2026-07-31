@@ -34,7 +34,7 @@ const STATUS_VARIANT: Record<
  * Lets the current user view their previously created/saved books.
  */
 export default async function MyBooksPage(props: MyBooksPageProps) {
-  const t = await useTranslations('Dashboard');
+  const t = await getTranslations('Dashboard');
   const result = await getUserBooksAction();
   const books = result?.data?.books ?? [];
 
