@@ -4,7 +4,6 @@ import { PostHogProvider } from '@/analytics/posthog-analytics';
 import { QueryProvider } from '@/components/providers/query-provider';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { websiteConfig } from '@/config/website';
-import type { Translations } from 'fumadocs-ui/i18n';
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import { useTranslations } from 'next-intl';
 import { ThemeProvider, useTheme } from 'next-themes';
@@ -49,7 +48,7 @@ export function Providers({ children, locale }: ProvidersProps) {
     previousPage: t('previousPage'),
     nextPage: t('nextPage'),
     chooseLanguage: t('chooseLanguage'),
-  } as Partial<Translations>;
+  } as Record<string, string>;
 
   return (
     <PostHogProvider>
