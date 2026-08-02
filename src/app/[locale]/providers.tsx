@@ -41,7 +41,7 @@ export function Providers({ children, locale }: ProvidersProps) {
 
   // translations object for fumadocs-ui from our message files
   const t = useTranslations('DocsPage');
-  const translations: Partial<Translations> = {
+  const translations = {
     toc: t('toc'),
     search: t('search'),
     lastUpdate: t('lastUpdate'),
@@ -49,7 +49,7 @@ export function Providers({ children, locale }: ProvidersProps) {
     previousPage: t('previousPage'),
     nextPage: t('nextPage'),
     chooseLanguage: t('chooseLanguage'),
-  };
+  } as Partial<Translations>;
 
   return (
     <PostHogProvider>
