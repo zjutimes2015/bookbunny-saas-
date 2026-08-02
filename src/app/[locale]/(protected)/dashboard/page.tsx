@@ -1,3 +1,5 @@
+'use client';
+
 import { ChartAreaInteractive } from '@/components/dashboard/chart-area-interactive';
 import { DashboardHeader } from '@/components/dashboard/dashboard-header';
 import { DataTable } from '@/components/dashboard/data-table';
